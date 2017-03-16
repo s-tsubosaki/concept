@@ -1,12 +1,12 @@
-var proxy_port  = process.argv[2];
-var hub_port    = process.argv[3];
+var proxy_addr  = process.argv[2];
+var hub_addr    = process.argv[3];
 var name        = process.argv[4];
 var socket      = require('socket.io-client');
 
 // proxyへ接続
-var proxy = socket.connect("http://localhost:"+proxy_port, { forceNew: true, transports: ['websocket'], query: 'hubport='+hub_port });
+var proxy = socket.connect('http://'+proxy_addr, { forceNew: true, transports: ['websocket'], query: 'hubaddr='+hub_addr });
 proxy.on('connect', function(){
-  console.log('connected to proxy:'+proxy_port+' hub:'+hub_port);
+  console.log('connected to proxy:'+proxy_addr+' hub:'+hub_addr);
 });
 proxy.on('message', function(msg){
   console.log(msg);

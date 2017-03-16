@@ -7,8 +7,8 @@ var client2hub = {};
 var hub2client = {};
 client_socket.on('connection', function(socket){
     // clientが接続したら、hubへ接続(client,hubからそれぞれを逆引きできるように)
-    var hubport = socket.handshake.query.hubport
-    var hub     = hub_socket.connect("http://localhost:"+hubport, { forceNew: true, transports: ['websocket']});
+    var hubaddr = socket.handshake.query.hubaddr
+    var hub     = hub_socket.connect('http://'+hubaddr, { forceNew: true, transports: ['websocket']});
     client2hub[socket.id]   = hub;
     hub2client[hub.id]      = socket;
     hub.on('connect', function(){
