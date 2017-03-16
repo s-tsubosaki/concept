@@ -6,6 +6,7 @@ var client_socket   = require('socket.io')(port);
 var client2hub = {};
 var hub2client = {};
 client_socket.on('connection', function(socket){
+    // clientからhubの情報を受け取ったら、hubへ接続(client,hubからそれぞれを逆引きできるように)
     socket.on('hub', function(hubport){
         var hub = hub_socket.connect("http://localhost:"+hubport, { forceNew: true, transports: ['websocket']});
         client2hub[socket.id]   = hub;
