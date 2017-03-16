@@ -4,11 +4,9 @@ var name        = process.argv[4];
 var socket      = require('socket.io-client');
 
 // proxyへ接続
-var proxy = socket.connect("http://localhost:"+proxy_port, { forceNew: true, transports: ['websocket']});
+var proxy = socket.connect("http://localhost:"+proxy_port, { forceNew: true, transports: ['websocket'], query: 'hubport='+hub_port });
 proxy.on('connect', function(){
   console.log('connected to proxy:'+proxy_port+' hub:'+hub_port);
-  // 接続完了直後に、hubの情報を渡す
-  proxy.emit('hub', hub_port);
 });
 proxy.on('message', function(msg){
   console.log(msg);
