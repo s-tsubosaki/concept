@@ -15,10 +15,6 @@ io.on('connection', function (socket) {
     // messageをproxyへbroadcast
     socket.on('message', function(msg){
         console.log('receive message:'+msg);
-        Object.keys(proxies).forEach(function(key) {
-            var proxy = proxies[key];
-            proxy.emit('message', msg);
-            console.log('send to '+proxy.id+' message:'+msg);
-        });
+        io.sockets.emit('message', msg);
     });
 });
