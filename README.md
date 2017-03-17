@@ -14,5 +14,5 @@ node proxy.js $proxy_port
 
 * chat_client
 ```
-node chat_client.js $proxyaddr $hubaddr $name
+node chat_client.js $proxyaddr:port $hubaddr:port $name
 ```
