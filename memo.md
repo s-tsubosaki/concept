@@ -8,7 +8,6 @@
   * proxy→hubの流れがmustであれば、hubにproxyの機能をもたせてしまっていい気がしてしまう
     * もしくはproxyはあくまで一つで、proxyを通してクライアントがhubに接続する
     * であればproxyとhubがそれぞれ別インスタンス上でも動く気がする
-  * http-keepaliveやlong-pollingは捨ててしまえば、いわゆるproxy的な(nginx的な)ものは捨てられそう
   * ポート簡単に枯渇しそう(user x 2の分ポートが必要という認識です)
 
 * workerもひとつのクライアントとして扱うのであれば、proxyを通した方がマイクロっぽい
