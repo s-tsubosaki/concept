@@ -12,7 +12,7 @@ node hub.js $hub_port
 node proxy.js $proxy_port
 ```
 
-* client
+* chat_client
 ```
-node client.js $proxy_port $hub_port $name
+node chat_client.js $proxy_port $hub_port $name
 ```
